@@ -6,9 +6,9 @@ def get(request):
 
 def post(request):
     if request.method == 'POST':
-        lattitude = request.POST['lattitude']
-        longtitude = request.POST['longtitude']
-        image = request.FILES['image']
+        lattitude = request.POST.get('lattitude', '')
+        longtitude = request.POST.get('longtitude', '')
+        image = request.FILES.get('image', '')
 
         p = Point(lattitude, longtitude, image)
         p.save()
