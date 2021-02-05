@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from . import models
+from .models import Point
 
 def get(request):
     pass
