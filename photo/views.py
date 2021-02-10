@@ -1,19 +1,22 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
 from .models import Point
+
 
 def get(request):
     pass
 
 def post(request):
+        
     if request.method == 'POST':
-        lattitude = request.POST.get('lattitude', '')
-        longtitude = request.POST.get('longtitude', '')
-        image = request.FILES.get('image', '')
+        
+        latitude = request.POST.get('latitude')
+        longtitude = request.POST.get('longtitude')
+        image = request.FILES.get('image')
 
-        p = Point(lattitude, longtitude, image)
+        p = Point(latitude = latitude, longtitude = longtitude, image = image)
         p.save()
 
-        return JsonResponse({'message' : 'SUCCESS'}, status=200)
+        return HttpResponse(status=200)
     else:
-        return JsonResponse({'message' : 'INVALID KEY'}, status=400)
+        return HttpResponse(status=400)
