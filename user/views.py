@@ -12,7 +12,7 @@ def signin(request):
             username = data['username']
             email = data['email']
             password = data['password']
-            
+        
             user = User.objects.create_user(username, email, password)
             user.save()
 
@@ -33,7 +33,7 @@ def login(request):
             username = data['username']
             email = data['email']
             password = data['password']
-            
+            print('dd')
             user = authenticate(username=username, password=password)
             if user is not None:
                 return JsonResponse({'message' : 'SUCCESS'}, status=200)
