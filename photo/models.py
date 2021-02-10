@@ -6,4 +6,6 @@ def user_directory_path(instance, filename):
 class Point(models.Model):
     latitude  = models.CharField(max_length=50)
     longtitude = models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
+    content = models.CharField(max_length=200)
     image      = models.ImageField(upload_to=user_directory_path)
