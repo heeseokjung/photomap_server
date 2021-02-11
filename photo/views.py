@@ -6,8 +6,7 @@ from .models import Point
 def get(request):
     pass
 
-def post(request):
-        
+def post(request):     
     if request.method == 'POST':
         latitude = request.POST.get('latitude')
         longtitude = request.POST.get('longtitude')
