@@ -2,10 +2,9 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.http import HttpResponse, JsonResponse
-from ..photo.models import Point
 import json
 
-def signin(request):
+def signup(request):
     data = json.loads(request.body)
 
     try:
@@ -37,8 +36,8 @@ def login(request):
             
             user = authenticate(username=username, password=password)
             if user is not None:
-                all_markers = Point.objects.all()
-                print(type(all_markers))
+                # all_markers = Point.objects.all()
+                # print(type(all_markers))
                 return JsonResponse({'message' : 'SUCCESS'}, status=200)
             else:
                 return JsonResponse({'message' : 'FAIL'}, status=400)
