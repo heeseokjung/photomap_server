@@ -14,7 +14,11 @@ def post(request):
         title = request.POST.get('title')
         content = request.POST.get('content')
 
-        p = Point(latitude=latitude, longtitude=longtitude, title=title, content=content, image=image)
+        p = Point(latitude=latitude, 
+                  longtitude=longtitude, 
+                  title=title, 
+                  content=content,
+                  image=image)
         p.save()
 
         return HttpResponse(status=200)

@@ -37,9 +37,16 @@ def login(request):
             email = data['email']
             password = data['password']
             
+            user = authenticate(username=username, password=password)
             if user is not None:
                 all_markers = Point.objects.all()
-                return JsonResponse({'message' : 'SUCCESS'}, status=200)
+
+                response = HttpResponse(status=200)
+                for marker in all_markers:
+                    response.write(marker)
+                    response.write('\n')
+                
+                return response
             else:
                 return JsonResponse({'message' : 'FAIL'}, status=400)
 
