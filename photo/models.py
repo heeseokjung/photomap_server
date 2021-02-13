@@ -9,3 +9,6 @@ class Point(models.Model):
     title      = models.CharField(max_length=50)
     content    = models.CharField(max_length=200, null=True)
     image      = models.ImageField(upload_to=user_directory_path)
+
+    def __str__(self):
+        return self.latitude + ':' + self.longtitude

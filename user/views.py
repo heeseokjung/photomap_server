@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.http import HttpResponse, JsonResponse
 import json
+import sys, os
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+from photo.models import Point
 
 def signup(request):
     data = json.loads(request.body)
@@ -34,10 +37,8 @@ def login(request):
             email = data['email']
             password = data['password']
             
-            user = authenticate(username=username, password=password)
             if user is not None:
-                # all_markers = Point.objects.all()
-                # print(type(all_markers))
+                all_markers = Point.objects.all()
                 return JsonResponse({'message' : 'SUCCESS'}, status=200)
             else:
                 return JsonResponse({'message' : 'FAIL'}, status=400)
