@@ -4,7 +4,8 @@ from .models import Point
 
 
 def get(request):
-    pass
+    latitude = request.POST.get('latitude')
+    longtitude = request.POST.get('longtitude')
 
 def post(request):     
     if request.method == 'POST':
@@ -13,11 +14,13 @@ def post(request):
         image = request.FILES.get('image')
         title = request.POST.get('title')
         content = request.POST.get('content')
+        author = request.POST.get('author')
 
         p = Point(latitude=latitude, 
                   longtitude=longtitude, 
                   title=title, 
                   content=content,
+                  author=author,
                   image=image)
         p.save()
 

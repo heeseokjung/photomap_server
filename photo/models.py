@@ -1,6 +1,8 @@
 from django.db import models
+import datetime
 
 def user_directory_path(instance, filename):
+    filename = datetime.datetime.now()
     return '%s:%s/%s' % (instance.latitude, instance.longtitude, filename)
 
 class Point(models.Model):
@@ -8,6 +10,7 @@ class Point(models.Model):
     longtitude = models.CharField(max_length=50)
     title      = models.CharField(max_length=50)
     content    = models.CharField(max_length=200, null=True)
+    author     = models.CharField(max_length=20)
     image      = models.ImageField(upload_to=user_directory_path)
 
     def __str__(self):
