@@ -4,9 +4,9 @@ import datetime
 def user_directory_path(instance, filename):
     extension = ''
     for i in range(len(filename)):
-        if filename[i] == '.'
+        if filename[i] == '.':
             extension = filename[i:]
-    filename = datetime.datetime.now() + extension
+    filename = str(datetime.datetime.now()) + extension
     return '%s:%s/%s' % (instance.latitude, instance.longtitude, filename)
 
 class Point(models.Model):
