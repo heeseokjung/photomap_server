@@ -2,7 +2,11 @@ from django.db import models
 import datetime
 
 def user_directory_path(instance, filename):
-    filename = datetime.datetime.now()
+    extension = ''
+    for i in range(len(filename)):
+        if filename[i] == '.'
+            extension = filename[i:]
+    filename = datetime.datetime.now() + extension
     return '%s:%s/%s' % (instance.latitude, instance.longtitude, filename)
 
 class Point(models.Model):
