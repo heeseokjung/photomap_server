@@ -24,6 +24,12 @@ def post(request):
                   image=image)
         p.save()
 
-        return HttpResponse(status=200)
+        path = image.user_directory_path
+        m = HttpResponse(status=200)
+        m.write(path)
+
+        return m        
+
+        #return HttpResponse(status=200)
     else:
         return HttpResponse(status=400)
