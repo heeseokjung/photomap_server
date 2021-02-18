@@ -24,6 +24,8 @@ def post(request):
                   image=image)
         p.save()  
 
+        print('path: %s' % p.image.path)
+
         return HttpResponse(status=200)
     else:
         return HttpResponse(status=400)
