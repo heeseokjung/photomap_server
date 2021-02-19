@@ -44,7 +44,9 @@ def login(request):
                 response = HttpResponse(status=200)
                 # response.write('message:SUCCESS')
                 for marker in all_markers:
-                    response.write(marker)
+                    response.write(marker.latitude + '?')
+                    response.write(marker.longtitude + '?')
+                    response.write(marker.image.url)
                     response.write('\n')
                 
                 return response

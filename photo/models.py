@@ -6,7 +6,9 @@ def user_directory_path(instance, filename):
     for i in range(len(filename)):
         if filename[i] == '.':
             extension = filename[i:]
-    filename = str(datetime.datetime.now()) + extension
+            break
+    now = datetime.datetime.now()
+    filename = now.strftime('%Y-%m-%d_%H:%M:%S') + extension
     return '%s:%s/%s' % (instance.latitude, instance.longtitude, filename)
 
 class Point(models.Model):
@@ -17,5 +19,5 @@ class Point(models.Model):
     author     = models.CharField(max_length=20)
     image      = models.ImageField(upload_to=user_directory_path)
 
-    def __str__(self):
-        return self.latitude + ':' + self.longtitude
+    #def __str__(self):
+    #    return self.latitude + ':' + self.longtitude

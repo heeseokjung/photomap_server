@@ -22,9 +22,8 @@ def post(request):
                   content=content,
                   author=author,
                   image=image)
+        print(p.image.url)
         p.save()  
-
-        print('path: %s' % p.image.path)
 
         return HttpResponse(status=200)
     else:
